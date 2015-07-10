@@ -1,0 +1,34 @@
+<div class="col-md-12">
+  <h2>TO DO</h2>
+  <span>{{ remaining() }} of {{ tasks.length }} remaining</span>
+
+  [ <a href="" ng-click="archive()">archive</a> ]
+  <ul class="unstyled">
+    <li>
+      <span ng-click="filterTasks(1)"><i class="icon-circle-blank icon-2"></i> All</span>
+    </li>
+    <li>
+      <span ng-click="filterTasks(2)"><i class="icon-exclamation-sign icon-2"></i> Active</span>
+    </li>
+    <li>
+      <span ng-click="filterTasks(3)"><i class="icon-ok-sign icon-2"></i> Done</span>
+    </li>
+  </ul>
+  <ul class="unstyled">
+    <li ng-repeat="todo in tasks">
+      <input type="checkbox" ng-model="todo.done">
+      <span ng-click="toggleTask(todo.id)"><i class="icon-2" ng-class="{ 'icon-check-empty': !todo.done, 'icon-check-sign': !!todo.done }"></i></span>
+      <span ng-click="deleteTask(todo.id)"><i class="icon-remove-circle icon-2"></i></span>
+      <span ng-class="{ 'done': !!todo.done, 'active': !todo.done }">{{todo.text}}</span>
+    </li>
+  </ul>
+  <form ng-submit="saveTask()">
+    <input type="hidden" ng-model="newOne.id"/>
+    <input type="text" ng-model="newOne.text"  size="30"
+           placeholder="add new task here" class="no-margin">
+    <button class="btn btn-primary" type="submit">Add&nbsp;
+      <!-- <i class="fa-plus-circle fa-lg fa"></i> -->
+      <i class="icon-plus-sign icon-2"></i>
+    </button>
+  </form>
+</div>

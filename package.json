@@ -1,0 +1,19 @@
+{
+  "name": "to-do-crossdomain",
+  "description": "An app to everywhere!",
+  "subdomain": "daniloster.todocrossdomain",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/jasmine-node spec"
+  },
+  "version": "0.0.1",
+  "engines": {
+    "node": "0.10.36"
+  },
+  "dependencies": {
+    "request": "*",
+    "express.io": "*",
+    "jasmine-node": "*",
+    "amdrequire": "*"
+  }
+}
