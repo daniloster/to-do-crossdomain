@@ -1,6 +1,14 @@
 // # https://github.com/techpines/express.io/tree/master/examples#realtime-canvas
-var app = require('express.io')();
+var express = require('express.io'),
+app = express(),
+rest = require('./rest/firebaseRest.js');
 //var fs = require('fs');
+
+// Setup your sessions, just like normal.
+app.use(express.cookieParser())
+app.use(express.session({secret: 'monk3y-t0do'}));
+app.use(express.bodyParser());
+
 
 //app.http().io();
 app.http();
@@ -18,11 +26,14 @@ app.get('/Content/(*/?)*', function(req, res) {
     res.sendfile(__dirname + req.path)
 });
 
+//req.body.hasOwnProperty('author')
+
 // Send the script files
 app.get('/(*/?)*', function(req, res) {
     res.sendfile(__dirname + '/layout.html')
 });
 
+rest.build(app);
 // // Send the script files
 // app.get('/js/(*/?)*', function(req, res) {
 //     res.sendfile(__dirname + req.path.replace('/js/', '/Content/Scripts/'))

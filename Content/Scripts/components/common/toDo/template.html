@@ -16,10 +16,9 @@
   </ul>
   <ul class="unstyled">
     <li ng-repeat="todo in tasks">
-      <input type="checkbox" ng-model="todo.done">
       <span ng-click="toggleTask(todo.id)"><i class="icon-2" ng-class="{ 'icon-check-empty': !todo.done, 'icon-check-sign': !!todo.done }"></i></span>
-      <span ng-click="deleteTask(todo.id)"><i class="icon-remove-circle icon-2"></i></span>
       <span ng-class="{ 'done': !!todo.done, 'active': !todo.done }">{{todo.text}}</span>
+      <span ng-click="removeTask(todo.id)"><i class="icon-remove-circle icon-2"></i></span>
     </li>
   </ul>
   <form ng-submit="saveTask()">
@@ -31,4 +30,5 @@
       <i class="icon-plus-sign icon-2"></i>
     </button>
   </form>
+  <div status-message sm-position="relative"></div>
 </div>

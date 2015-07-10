@@ -25,6 +25,11 @@
                                 return invalid;
                             };
 
+                            $rootScope.clearMessages = function (ticket) {
+                              $rootScope.errorMessage = null;
+                              $rootScope.successMessage = null;
+                            };
+
                             $rootScope.errorMessageHandler = function (ticket) {
                                 if (ticket == $rootScope.ticketErrorMessage) {
                                     $rootScope.errorMessage = null;

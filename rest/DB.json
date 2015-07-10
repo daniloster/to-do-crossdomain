@@ -1,0 +1,33 @@
+{
+  "daniloster" : {
+    "name" : "Danilo Castro",
+    "password" : 123456,
+    "tasks" : {
+      "-JtsYzNnTDALkt-8aAoy" : {
+        "text" : "Amazing task!"
+      },
+      "-JtsZ4u3xdSF-Ajpdr3M" : {
+        "done" : true,
+        "text" : "So wonderful when we have a lot of tasks!"
+      },
+      "-JtsZ8yKavbCqHuQJIOS" : {
+        "text" : "What else do I want?"
+      }
+    }
+  },
+  "leticalmon" : {
+    "name" : "Leticia Calmon",
+    "password" : 123456,
+    "tasks" : {
+      "-Jtsa8HNdvtHKY-MX9Gj" : {
+        "text" : "I guess that I have one more!"
+      },
+      "-JtsaAgg46K81dAyXREG" : {
+        "text" : "My unique task!"
+      },
+      "-JtsaIh8kQFvD_XrHe3m" : {
+        "text" : "I have quite few tasks!"
+      }
+    }
+  }
+}

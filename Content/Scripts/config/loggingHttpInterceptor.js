@@ -2,14 +2,14 @@
     var loaded = false;
     define(['app', 'config/configApp'], function (app) {
         if (!loaded) {
-            
+
             // Intercept http calls.
             app.lazy.factory('LoggingHttpInterceptor', ['$q', 'ConfigApp', function ($q, ConfigApp) {
                 return {
                     // On request success
                     request: function (config) {
                         config = config || $q.when(config);
-                        config.url = ConfigApp.getNoCachePath(config.url);
+                        //config.url = ConfigApp.getNoCachePath(config.url);
                         //// console.log(config); // Contains the data about the request before it is sent.
                         //config.headers.Accept = "application/json, text/plain, text/html, */*";
                         if (appSettings.debug) {
