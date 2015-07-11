@@ -1,9 +1,8 @@
-<div class="col-md-12">
-  <h2>TO DO</h2>
-  <span>{{ remaining() }} of {{ tasks.length }} remaining</span>
-
-  [ <a href="" ng-click="archive()">archive</a> ]
-  <ul class="unstyled">
+<div class="col-md-12 to-do-container">
+  <h2 class="to-do-title">TO DO</h2>
+  <span class="to-do-totals">{{ remaining }} of {{ totalTasks }} remaining</span>
+  <!-- [ <a href="" ng-click="archive()">archive</a> ] -->
+  <!-- <ul class="unstyled">
     <li>
       <span ng-click="filterTasks(1)"><i class="icon-circle-blank icon-2"></i> All</span>
     </li>
@@ -13,18 +12,18 @@
     <li>
       <span ng-click="filterTasks(3)"><i class="icon-ok-sign icon-2"></i> Done</span>
     </li>
-  </ul>
-  <ul class="unstyled">
-    <li ng-repeat="todo in tasks">
-      <span ng-click="toggleTask(todo.id)"><i class="icon-2" ng-class="{ 'icon-check-empty': !todo.done, 'icon-check-sign': !!todo.done }"></i></span>
-      <span ng-class="{ 'done': !!todo.done, 'active': !todo.done }">{{todo.text}}</span>
-      <span ng-click="removeTask(todo.id)"><i class="icon-remove-circle icon-2"></i></span>
+  </ul> -->
+  <ul class="unstyled to-do-tasks">
+    <li ng-repeat="todo in tasks" class="to-do-task" ng-class="{ 'to-do-task-even': !!$even }">
+      <span ng-click="toggleTask(todo.id)" class="to-do-task-done"><i class="icon-2" ng-class="{ 'icon-check-empty': !todo.done, 'icon-check-sign': !!todo.done }"></i></span>
+      <span ng-class="{ 'done': !!todo.done, 'active': !todo.done }" class="to-do-task-description">{{todo.text}}</span>
+      <span ng-click="removeTask(todo.id)" class="to-do-task-remove"><i class="icon-remove-circle icon-2"></i></span>
     </li>
   </ul>
-  <form ng-submit="saveTask()">
+  <form ng-submit="saveTask()" class="to-do-form">
     <input type="hidden" ng-model="newOne.id"/>
     <input type="text" ng-model="newOne.text"  size="30"
-           placeholder="add new task here" class="no-margin">
+           placeholder="add new task here" class="no-margin to-do-form-description">
     <button class="btn btn-primary" type="submit">Add&nbsp;
       <!-- <i class="fa-plus-circle fa-lg fa"></i> -->
       <i class="icon-plus-sign icon-2"></i>

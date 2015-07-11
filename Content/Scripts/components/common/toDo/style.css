@@ -1,6 +1,52 @@
-﻿.tab-content>.tab-pane.active {
-    display: block !important;
+.to-do-container {
+ background-color: #cfcfc0;
+ padding: 10px;
 }
-.nav.nav-tabs .active a {
-  border-bottom: 4px solid #90cb26;
+
+.to-do-title {
+  background-color: #inherit;
+}
+
+.to-do-totals {
+  background-color: #inherit;
+}
+
+.to-do-tasks {
+  background-color: #inherit;
+}
+
+.to-do-task {
+  background-color: #inherit;
+  white-space: nowrap;
+  line-height: 38px;
+  padding: 0 10px;
+}
+
+.to-do-task-even {
+  background-color: #eaead6;
+}
+
+.to-do-task-done {
+  background-color: #inherit;
+
+}
+
+.to-do-task-description {
+  background-color: #inherit;
+  display: inline-block;
+  margin-right: 35px;
+}
+
+.to-do-task-remove {
+  background-color: #inherit;
+  position: absolute;
+  right: 20px;
+}
+
+.to-do-form {
+
+}
+
+.to-do-form-description {
+
 }

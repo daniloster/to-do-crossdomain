@@ -33,9 +33,11 @@
                         .success(function(data){
                           $scope.user = data;
                           $scope.tasks = data.tasks;
+                          $scope.refreshTotals();
                         }).error(function(data){
                           $scope.user = null;
                           $scope.tasks = null;
+                          $scope.refreshTotals();
                           $rootScope.updateErrorMessage(data.message);
                         });
                       };
@@ -81,12 +83,19 @@
                         toDoService.getTasks()
                         .success(function(data){
                           $scope.tasks = data;
+                          $scope.refreshTotals();
                         })
                         .error(function(data){
+                          $scope.tasks = null;
+                          $scope.refreshTotals();
                           $rootScope.updateErrorMessage(data.message);
                         })
                       };
-                      $scope.tasks = [{id: 1, text: 'hello world!'}, {id: 2, text: 'get your shit together and move on!'}]
+
+                      $scope.refreshTotals = function(){
+                        $scope.remaining = Object.keys($scope.tasks || {}).filter(function(item){ return !!$scope.tasks && $scope.tasks[item] && !$scope.tasks[item].done; }).length;
+                        $scope.totalTasks = Object.keys($scope.tasks || {}).length;
+                      };
                     }],
                     restrict: 'EA',
                     templateUrl: ConfigApp.getPath('/Content/Scripts/components/common/toDo/template.html'),
