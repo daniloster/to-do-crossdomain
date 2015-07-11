@@ -53,7 +53,12 @@ define(['lib/IE/isIE', 'lib/IE/isIE8', 'lib/IE/isIE9', 'lib/IE/isIE11', 'xdomain
             $.support.cors = true;
 
             function init() {
-                require(['angular', 'app', 'config', 'util'], function (angular, app) {
+                var modules = ['angular', 'app', 'config', 'util'];
+                (appSettings.componentName || []).forEach(function(item){
+                    modules.push(item);
+                });
+
+                require(modules, function (angular, app) {
                     angular.element(document).ready(function () {
                         angular.bootstrap(doc, [app['name']]);
                     });

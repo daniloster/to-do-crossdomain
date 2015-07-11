@@ -1,11 +1,11 @@
-﻿(function () {
+(function () {
     define(['app', 'routesDefinitionDeferred', 'config/loggingHttpInterceptor', 'config/configApp', 'auth/authorizationService'], function (app) {
 
         app.config(['RoutesDefinitionDeferredProvider', '$routeProvider', '$locationProvider', '$controllerProvider', '$provide', '$filterProvider', '$compileProvider', '$animateProvider', '$httpProvider', '$sceDelegateProvider', 'ConfigApp',
         function (routesDefinitionDeferredProvider, $routeProvider, $locationProvider, $controllerProvider, $provide, $filterProvider, $compileProvider, $animateProvider, $httpProvider, $sceDelegateProvider, ConfigApp) {
-            // Recreating the registers for each kind of object, it ensure that, when a script 
-            // is load after the application has started, it will bee registered. Knowing 
-            // that app.controller / app.factory / and the other methods are unassigned after 
+            // Recreating the registers for each kind of object, it ensure that, when a script
+            // is load after the application has started, it will bee registered. Knowing
+            // that app.controller / app.factory / and the other methods are unassigned after
             // load app.
             app.lazy = {
                 provider: $provide.provider,
@@ -32,7 +32,7 @@
                 'self',
                 // Allow loading from our assets domain.  Notice the difference between * and **.
                 // Eg: www.clientwebsite.com/**
-                // It must be the domain that is using the CORS Web Component, once I can use the 
+                // It must be the domain that is using the CORS Web Component, once I can use the
                 // same config file for an Single Page Application or a CORS Web Component.
                 ConfigApp.getPath('/**')
             ]);

@@ -41,6 +41,10 @@
 			it ('testing type', function(){
 				expect(typeof obj).toBe('string');
 	    });
+
+			it ('testing length', function(){
+				expect(obj.length).toBe(9);
+	    });
 		});
 	});
 })();

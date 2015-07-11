@@ -21,12 +21,18 @@ app.http();
 
 /* HTTP HANDLERS */
 
+app.use(function(req, res, next) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, Content-Length, X-Requested-With, *");
+  return next();
+});
+
 // Send the style sheet files
 app.get('/Content/(*/?)*', function(req, res) {
     res.sendfile(__dirname + req.path)
 });
-
-//req.body.hasOwnProperty('author')
 
 // Send the script files
 app.get('/(*/?)*', function(req, res) {
@@ -34,58 +40,4 @@ app.get('/(*/?)*', function(req, res) {
 });
 
 rest.build(app);
-// // Send the script files
-// app.get('/js/(*/?)*', function(req, res) {
-//     res.sendfile(__dirname + req.path.replace('/js/', '/Content/Scripts/'))
-// });
-//
-// // Send the style sheet files
-// app.get('/css/(*/?)*', function(req, res) {
-//     res.sendfile(__dirname + req.path.replace('/css/', '/Content/Styles/'))
-// });
-//
-// // Send the images
-// app.get('/img/(*/?)*', function(req, res) {
-//     res.sendfile(__dirname + req.path.replace('/img/', '/Content/images/'))
-// });
-//
-// // Send the template html.
-// app.get('/', function(req, res) {
-//     res.sendfile(__dirname + '/layout.html')
-// });
-
-/* SOCKET HANDLERS */
-
-// app.io.route('Client:addPlayer', function(req) {
-//     req.io.broadcast('Server:addPlayer', req.data)
-// });
-
-// app.io.route('Client:refreshPlayer', function(req) {
-//     req.io.broadcast('Server:refreshPlayer', req.data)
-// });
-
-app.listen(7076);
-
-/*function handler(req, res) {
-	if (req.url.indexOf('.js') > -1 || req.url.indexOf('/img/') > -1) {
-		fs.readFile(__dirname + req.url,
-	  	function (err, data) {
-	    	if (err) {
-	      		res.writeHead(500);
-	      		return res.end('Error loading index.html');
-	    	}
-	    	res.writeHead(200);
-	    	res.end(data);
-		});
-	} else {
-		fs.readFile(__dirname + '/page/index.html',
-	  	function (err, data) {
-	    	if (err) {
-	      		res.writeHead(500);
-	      		return res.end('Error loading index.html');
-	    	}
-	    	res.writeHead(200);
-	    	res.end(data);
-		});
-	}
-}*/
+app.listen(process.env.PORT);
