@@ -1,7 +1,7 @@
 <div class="col-md-12 to-do-container">
   <h2 class="to-do-title">TO DO</h2>
   <span class="to-do-totals">{{ remaining }} of {{ totalTasks }} remaining</span>
-  <ul class="unstyled to-do-tasks">
+  <ul class="list-unstyled to-do-tasks">
     <li ng-repeat="todo in tasks" class="to-do-task" ng-class="{ 'to-do-task-even': !!$even }">
       <span ng-click="toggleTask(todo.id)" class="to-do-task-done"><i class="fa fa-lg" ng-class="{ 'fa-square-o': !todo.done, 'fa-check-square': !!todo.done }"></i></span>
       <span ng-class="{ 'done': !!todo.done, 'active': !todo.done }" class="to-do-task-description">{{todo.text}}</span>
