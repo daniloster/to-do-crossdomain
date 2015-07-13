@@ -39,14 +39,7 @@ define(['lib/IE/isIE', 'lib/IE/isIE8', 'lib/IE/isIE9', 'lib/IE/isIE11', 'xdomain
 
     var loadJquery = function () {
         require(['jq'], function ($) {
-            var elements = $('[xxxxx-component-attr]');
-            if (elements.length == 0) {
-                $('[src="' + baseUrl + '/Content/Scripts/lib/component-require.min.js"]').siblings().each(function (idx, item) {
-                    if (item.nodeName.toUpperCase() == "XXXXX-COMPONENT-ATTR") {
-                        elements = $(item);
-                    }
-                });
-            }
+            var elements = $('[src="' + baseUrl + '/Content/Scripts/lib/component-require.min.js"]').parent();
             var doc = appSettings.applyForAllDocument || elements.length == 0 ? document : elements;
 
             //fix jquery cors

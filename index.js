@@ -25,8 +25,8 @@ app.http();
 /* HTTP HANDLERS */
 
 app.use(function(req, res, next) {
-  console.log(req.headers);
-  console.log(req.headers.origin || req.headers.host);
+  // console.log(req.headers);
+  // console.log(req.headers.origin || req.headers.host);
   if (!!req.headers.origin) {
     res.setHeader("Access-Control-Allow-Origin", req.headers.origin);
   }
