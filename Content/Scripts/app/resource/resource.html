@@ -3,7 +3,7 @@
 <div status-message></div>
 <div class="container page-body" ng-controller="ResourceController">
     <div class="col-xs-12">
-        <h2>Resources <a href="javascript:;" modal-target="#registeringResource" modal-onload="setCurrent({})"><i class="icon-plus-sign"></i></a></h2>
+        <h2>Resources <a href="javascript:;" modal-target="#registeringResource" modal-onload="setCurrent({})"><i class="fa fa-plus-circle"></i></a></h2>
         <form name="resourceFilterForm" class="col-xs-12  no-wpadding form-fieldset-dialog blue">
             <fieldset>
                 <legend>Filters</legend>
@@ -48,7 +48,7 @@
         </form>
     </div>
     <div class="col-xs-12">
-        <h3>List of resources <i class="icon-archive"></i></h3>
+        <h3>List of resources <i class="fa fa-archive"></i></h3>
         <table class="table table-striped" ng-show="!!resourcesOut && !!resourcesOut.length">
             <thead>
                 <tr>
@@ -72,8 +72,8 @@
                         <p>{{ item.ResourceType.Description }}</p>
                     </td>
                     <td class="table-options">
-                        <a href="javascript:;" modal-target="#registeringResource" modal-onload="setCurrent(item)"><i class="icon-pencil"></i></a>
-                        <a href="javascript:;" modal-target="#deletingResource" modal-onload="setDeletingItem(item)"><i class="icon-remove"></i></a>
+                        <a href="javascript:;" modal-target="#registeringResource" modal-onload="setCurrent(item)"><i class="fa fa-pencil-square-o"></i></a>
+                        <a href="javascript:;" modal-target="#deletingResource" modal-onload="setDeletingItem(item)"><i class="fa fa-times-circle-o"></i></a>
                     </td>
                 </tr>
             </tbody>
@@ -94,7 +94,7 @@
         <div ng-show="hasSearched && !resources.length">
             <div class="alert alert-info">
                 <div class="message-center">
-                    <strong><i class="icon-check"></i>&nbsp;Ops!&nbsp;</strong>We could not find resources for you.</i>
+                    <strong><i class="fa fa-check-square-o"></i>&nbsp;Ops!&nbsp;</strong>We could not find resources for you.</i>
                 </div>
             </div>
         </div>
