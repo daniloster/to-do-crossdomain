@@ -48,5 +48,8 @@ app.get('/(*/?)*', function(req, res) {
 });
 
 rest.build(app);
-app.listen(7076);
-// app.listen(process.env.PORT);
+try {
+  app.listen(process.env.PORT);
+catch (e) {
+  app.listen(7076);
+}
