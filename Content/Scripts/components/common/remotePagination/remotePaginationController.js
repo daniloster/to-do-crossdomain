@@ -1,9 +1,9 @@
 ﻿(function () {
     var Ctrl = null;
-    define(['app', 'components/common/loading/loadingController', 'components/common/services/jsonService'], function (app, loadingController) {
+    define(['app', 'components/common/loading/loadingService', 'components/common/services/jsonService'], function (app) {
         if (Ctrl == null) {
-            Ctrl = ['$scope', '$filter', '$timeout', 'JsonService', function ($scope, $filter, $timeout, jsonService) {
-                
+            Ctrl = ['$scope', '$filter', '$timeout', 'JsonService', 'LoadingService', function ($scope, $filter, $timeout, jsonService, loadingService) {
+
                 $scope.$watch('currentPage', function (nval, oval) {
                     if (nval == oval) return;
                     if (nval < 1 || nval > $scope.pageCount) {
@@ -54,7 +54,7 @@
                 });
 
                 $scope.search = function () {
-                    loadingController.startLoading();
+                    loadingService.startLoading();
                     $scope.filter = $scope.filter || {};
                     $scope.filter.Page = {
                         Number: $scope.currentPage,
@@ -67,7 +67,7 @@
                         $scope.totalItems = data.TotalItems || 0;
                         $scope.pageCount = Math.ceil(data.TotalItems / parseFloat($scope.pageSize));
                         refresh();
-                        loadingController.stopLoading();
+                        loadingService.stopLoading();
                     }, function (data) {
                         $scope.list = [];
                         $scope.currentPage = 1;
@@ -75,7 +75,7 @@
                         $scope.totalItems = 0;
                         $scope.pageCount = 0;
                         refresh();
-                        loadingController.stopLoading();
+                        loadingService.stopLoading();
                     });
                 };
 

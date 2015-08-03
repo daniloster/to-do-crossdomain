@@ -1,9 +1,9 @@
 ﻿(function () {
     var Ctrl = null;
-    define(['angular', 'app', 'auth/session', 'components/common/loading/loadingController', 'components/common/services/jsonService'],
-    function (angular, app, session, loadingController) {
+    define(['angular', 'app', 'auth/session', 'components/common/loading/loadingService', 'components/common/services/jsonService'],
+    function (angular, app, session, loadingService) {
         if (Ctrl == null) {
-            Ctrl = ['$scope', '$rootScope', '$location', 'JsonService', function ($scope, $rootScope, $location, jsonService) {
+            Ctrl = ['$scope', '$rootScope', '$location', 'JsonService', 'LoadingService', function ($scope, $rootScope, $location, jsonService, loadingService) {
                 $scope.selecteds = $scope.selecteds == undefined ? [] : $scope.selecteds;
                 var selecteds = $scope.selecteds.map(function (item) { return item; });
 
@@ -24,13 +24,13 @@
                         }
                         $scope.sourceArgs.query = query;
                     }
-                    loadingController.startLoading();
+                    loadingService.startLoading();
                     jsonService.postData($scope.sourceRef, $scope.sourceArgs, function (data) {
                         $scope.dataSource = data;
-                        loadingController.stopLoading();
+                        loadingService.stopLoading();
                     }, function (data) {
                         $scope.dataSource = [];
-                        loadingController.stopLoading();
+                        loadingService.stopLoading();
                     });
                 };
 

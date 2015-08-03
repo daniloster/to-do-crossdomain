@@ -45,7 +45,7 @@
             template: '/Content/Scripts/path/to/page2.html'
             dependencies: ['controllers/MySecondController'] // REQUIREJS + ANGULAR dependencies
         }];
-        
+
         $scope.currentTabIndex = (!$routeParams.tabName ? 0 : ($scope.tabs.getIndex(function (tab) {
             return tab.name === $routeParams.tabName;
         })));
@@ -56,12 +56,12 @@
         params: { tabName: 'tab1' }, // default value in case of null
         templateUrl: '/Content/Scripts/path/to/page-with-tabs.html'
     });
-    
+
     */
 
-    define(['require', 'angular', 'app', 'components/common/loading/loadingController'], function (require, angular, app, loadingController) {
+    define(['require', 'angular', 'app', 'components/common/loading/loadingService'], function (require, angular, app) {
         if (!loaded) {
-            app.lazy.directive("tabContainer", ['ConfigApp', function (ConfigApp) {
+            app.lazy.directive("tabContainer", ['LoadingService', 'ConfigApp', function (loadingService, ConfigApp) {
                 angular.element('body').after(angular.element(ConfigApp.getElementLink('/Content/Scripts/components/common/tabContainer/style.css')));
                 return {
                     controller: ['$scope', '$rootScope', '$route', function ($scope, $rootScope, $route) {

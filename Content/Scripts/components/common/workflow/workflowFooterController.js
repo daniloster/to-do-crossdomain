@@ -35,7 +35,11 @@
                 }
             };
 
-            Ctrl = ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
+            app.lazy.factory('WorkflowService', function() {
+              return instance;
+            });
+
+            Ctrl = ['$scope', '$rootScope', '$location', 'WorkflowService', function ($scope, $rootScope, $location, workflowService) {
                 var isMoveNextValid = true;
                 $scope.items = steps.filter(function (item, idx) {
                     return idx > 0;
@@ -49,17 +53,17 @@
                 $scope.isLastMove = !!$scope.secondLastStep && $scope.secondLastStep.name == $scope.currentStep.name;
 
                 $scope.movePrevious = function () {
-                    instance.movePrevious($location);
+                    workflowService.movePrevious($location);
                 };
 
                 $scope.moveNext = function () {
                     isMoveNextValid = true;
                     $rootScope.$broadcast('Workflow:get_IsMoveNextValid');
                     if (isMoveNextValid) {
-                        if (angular.isFunction(instance.onMoveNext)) {
-                            instance.onMoveNext(function () { instance.moveNext($location); });
+                        if (angular.isFunction(workflowService.onMoveNext)) {
+                            workflowService.onMoveNext(function () { workflowService.moveNext($location); });
                         } else {
-                            instance.moveNext($location);
+                            workflowService.moveNext($location);
                         }
                     }
                 };

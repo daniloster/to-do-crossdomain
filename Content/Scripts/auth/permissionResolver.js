@@ -1,13 +1,13 @@
 ﻿(function (Factory, identification) {
     identification = identification || 0;
-    define(['app', 'auth/session'], function (app, session) {
+    define(['app', 'auth/session'], function (app) {
         if (Factory === undefined) {
 
             app.lazy.provider('PermissionResolver', (Factory = function permissionResolverProvider() {
                 var globalActive = true;
                 this.defineResolver = function (id) {
-                    return ['$q', '$route', '$location', '$rootScope', 'AuthorizationService',
-                    function ($q, $route, $location, $rootScope, authorizationService) {
+                    return ['$q', '$route', '$location', '$rootScope', 'AuthorizationService', 'Session',
+                    function ($q, $route, $location, $rootScope, authorizationService, session) {
                         var self = this;
                         self.resolve = function () {
                             var deferred = $q.defer(), authorized = $q.defer(), path = $location.path(), redirect,
@@ -22,7 +22,7 @@
                             redirect = function (routeForUnauthorizedAccess) {
                                 //If user does not have required access, we will route the user to unauthorized access page
                                 $location.path(routeForUnauthorizedAccess);
-                                //As there could be some delay when location change event happens, 
+                                //As there could be some delay when location change event happens,
                                 //we will keep a watch on $locationChangeSuccess event
                                 // and would resolve promise when this event occurs.
                                 $rootScope.$on('$locationChangeSuccess', function (next, current) {
@@ -96,7 +96,3 @@
         }
     });
 })();
-
-
-
-
