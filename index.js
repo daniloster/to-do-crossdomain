@@ -6,7 +6,10 @@ rest = require('./rest/firebaseRest.js');
 
 // Setup your sessions, just like normal.
 app.use(express.cookieParser())
-app.use(express.session({secret: 'monk3y-t0do'}));
+app.use(express.session({
+  secret: 'monk3y-t0do',
+  key: 'todo-session-cors'
+}));
 app.use(express.bodyParser());
 
 
@@ -22,11 +25,16 @@ app.http();
 /* HTTP HANDLERS */
 
 app.use(function(req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  // console.log(req.headers);
+  // console.log(req.headers.origin || req.headers.host);
+  if (!!req.headers.origin) {
+    res.setHeader("Access-Control-Allow-Origin", req.headers.origin);
+  }
   res.setHeader("Access-Control-Allow-Credentials", true);
   res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, Content-Length, X-Requested-With, *");
-  return next();
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, Accept, X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, *");
+
+  next();
 });
 
 // Send the style sheet files

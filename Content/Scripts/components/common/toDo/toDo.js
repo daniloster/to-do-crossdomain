@@ -24,8 +24,7 @@
                   }
                 };
             }]);
-
-            app.lazy.directive("toDo", ['LoadingService', 'ConfigApp', function (ConfigApp, loadingService) {
+            app.lazy.directive("toDo", ['LoadingService', 'ConfigApp', function (loadingService, ConfigApp) {
                 angular.element('body').after(angular.element(ConfigApp.getElementLink('/Content/Scripts/components/common/toDo/style.css')));
                 return {
                     controller: ['$scope', '$rootScope', 'ToDoService', function ($scope, $rootScope, toDoService) {
@@ -41,14 +40,14 @@
                           $scope.user = null;
                           $scope.tasks = null;
                           $scope.refreshTotals();
-                          loadingService.stopLoading();
                           $rootScope.updateErrorMessage(data.message);
+                          loadingService.stopLoading();
                         });
                       };
 
                       $scope.saveTask = function(){
-                        loadingService.startLoading();
                         $rootScope.clearMessages();
+                        loadingService.startLoading();
                         toDoService.addTask($scope.newOne)
                         .success(function(data){
                           $scope.newOne = {};
@@ -57,14 +56,14 @@
                           loadingService.stopLoading();
                         })
                         .error(function(data){
-                          loadingService.stopLoading();
                           $rootScope.updateErrorMessage(data.message);
+                          loadingService.stopLoading();
                         })
                       };
 
                       $scope.removeTask = function(id){
-                        loadingService.startLoading();
                         $rootScope.clearMessages();
+                        loadingService.startLoading();
                         toDoService.removeTask(id)
                         .success(function(data){
                           $rootScope.updateSuccessMessage(data.message);
@@ -72,23 +71,23 @@
                           loadingService.stopLoading();
                         })
                         .error(function(data){
-                          loadingService.stopLoading();
                           $rootScope.updateErrorMessage(data.message);
+                          loadingService.stopLoading();
                         })
                       };
 
                       $scope.toggleTask = function(id){
-                        loadingService.startLoading();
                         $rootScope.clearMessages();
+                        loadingService.startLoading();
                         toDoService.toggleTask(id)
                         .success(function(data){
                           $scope.getTasks();
-                          loadingService.stopLoading();
                           $rootScope.updateSuccessMessage(data.message);
+                          loadingService.stopLoading();
                         })
                         .error(function(data){
-                          loadingService.stopLoading();
                           $rootScope.updateErrorMessage(data.message);
+                          loadingService.stopLoading();
                         })
                       };
 
@@ -103,8 +102,8 @@
                         .error(function(data){
                           $scope.tasks = null;
                           $scope.refreshTotals();
-                          loadingService.stopLoading();
                           $rootScope.updateErrorMessage(data.message);
+                          loadingService.stopLoading();
                         })
                       };
 

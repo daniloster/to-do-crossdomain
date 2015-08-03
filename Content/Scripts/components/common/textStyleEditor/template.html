@@ -12,14 +12,14 @@
             <div class="row">
                  <div class="col-xs-12 col-md-4">
                     <div class="form-group">
-                        <label for="{{editorId}}_Color"><i class="icon-paint-brush"></i> Colour</label>
+                        <label for="{{editorId}}_Color"><i class="fa fa-paint-brush"></i> Colour</label>
                         <input color-picker id="{{editorId}}_Color" ng-model="element.Color" type="text" placeholder="Choose colour" required="">
                     </div>
                 </div>
 
                 <div class="col-xs-12 col-md-4">
                     <div class="form-group">
-                        <label for="{{editorId}}_BackgroundColor"><i class="icon-tint"></i> Background Colour</label>
+                        <label for="{{editorId}}_BackgroundColor"><i class="fa fa-tint"></i> Background Colour</label>
                         <input color-picker id="{{editorId}}_BackgroundColor" ng-model="element.BackgroundColor" type="text" placeholder="Choose colour" required="">
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                     <fieldset>
                         <div class="col-xs-12 col-md-4">
                             <div class="form-group">
-                                <label for="{{editorId}}_Family"><i class="icon-font"></i> Font Family</label>
+                                <label for="{{editorId}}_Family"><i class="fa fa-font"></i> Font Family</label>
                                 <select class="form-control" id="{{editorId}}_FontFamily" name="{{editorId}}_FontFamily" class="form-control"
                                         ng-model="element.FontFamily" ng-options="family as family.Name for family in font.families" required=""></select>
                             </div>
@@ -38,7 +38,7 @@
 
                         <div class="col-xs-12 col-md-4">
                             <div class="form-group">
-                                <label for="{{editorId}}_Weight"><i class="icon-bold"></i> Font Weight</label>
+                                <label for="{{editorId}}_Weight"><i class="fa fa-bold"></i> Font Weight</label>
                                 <select class="form-control" id="{{editorId}}_Weight" name="{{editorId}}_Weight" class="form-control"
                                         ng-model="element.FontWeight" ng-options="weight as weight.Name for weight in element.FontFamily.Weights" required=""></select>
                             </div>
@@ -46,7 +46,7 @@
 
                         <div class="col-xs-12 col-md-4">
                             <div class="form-group">
-                                <label for="{{editorId}}_Size"><i class="icon-text-height"></i> Font Size</label>
+                                <label for="{{editorId}}_Size"><i class="fa fa-text-height fa"></i> Font Size</label>
                                 <select class="form-control" id="{{editorId}}_Size" name="{{editorId}}_Size" class="form-control"
                                         ng-model="element.FontSize" ng-options="size as size.Value for size in font.sizes" required=""></select>
                             </div>

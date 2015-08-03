@@ -1,10 +1,10 @@
 ﻿<div class="alert alert-danger ng-hide" ng-show="$root.errorMessage" ng-cloak>
     <div class="message-center">
-        <i class="icon-warning-sign"></i>&nbsp; {{ $root.errorMessage }} &nbsp;<i class="icon-remove hand" ng-click="$root.errorMessage = null"></i>
+        <i class="fa fa-exclamation-triangle"></i>&nbsp; {{ $root.errorMessage }} &nbsp;<i class="fa fa-times-circle-o hand" ng-click="$root.errorMessage = null"></i>
     </div>
 </div>
 <div class="alert alert-success ng-hide" ng-show="$root.successMessage" ng-cloak>
     <div class="message-center">
-        <i class="icon-ok-sign"></i>&nbsp; {{ $root.successMessage }} &nbsp;<i class="icon-remove hand" ng-click="$root.successMessage = null"></i>
+        <i class="fa fa-check-circle"></i>&nbsp; {{ $root.successMessage }} &nbsp;<i class="fa fa-times-circle-o hand" ng-click="$root.successMessage = null"></i>
     </div>
 </div>

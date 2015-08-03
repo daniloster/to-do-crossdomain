@@ -6,7 +6,7 @@
             app.lazy.directive("lookupMultiple", ['ConfigApp', '$compile', '$parse', function (ConfigApp, $compile, $parse) {
                 angular.element('body').after(angular.element(ConfigApp.getElementLink('/Content/Scripts/components/common/lookup/style.css')));
 
-                var templateDropdown = '<a id="[LOOKUP:ID]_btn" class="lookupMultipleBtn" href="javascript:;" ng-click="search()"><i class="icon-search icon-2"></i></a>' +
+                var templateDropdown = '<a id="[LOOKUP:ID]_btn" class="lookupMultipleBtn" href="javascript:;" ng-click="search()"><i class="icon-search fa fa-lg"></i></a>' +
                     '<select id="dropdown[LOOKUP:ID]" name="dropdown[LOOKUP:ID]" [LOOKUP:REQUIRED] multiple class="ng-hide">' +
                     '   <option value="{{ item[comparatorProperty] }}" selected ng-repeat="item in selecteds track by item[idProperty] + \'-\' + index">{{ (!!labelProperty ? item[labelProperty] : item.toString()) }}</option>' +
                     '</select>',

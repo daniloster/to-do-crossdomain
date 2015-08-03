@@ -39,14 +39,7 @@ define(['lib/IE/isIE', 'lib/IE/isIE8', 'lib/IE/isIE9', 'lib/IE/isIE11', 'xdomain
 
     var loadJquery = function () {
         require(['jq'], function ($) {
-            var elements = $('[xxxxx-component-attr]');
-            if (elements.length == 0) {
-                $('[src="' + baseUrl + '/Content/Scripts/lib/component-require.min.js"]').siblings().each(function (idx, item) {
-                    if (item.nodeName.toUpperCase() == "XXXXX-COMPONENT-ATTR") {
-                        elements = $(item);
-                    }
-                });
-            }
+            var elements = $('[src="' + baseUrl + '/Content/Scripts/lib/component-require.min.js"]').parent();
             var doc = appSettings.applyForAllDocument || elements.length == 0 ? document : elements;
 
             //fix jquery cors
@@ -77,8 +70,8 @@ define(['lib/IE/isIE', 'lib/IE/isIE8', 'lib/IE/isIE9', 'lib/IE/isIE11', 'xdomain
 
                 //css = '<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">';
                 //netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css
-                // css = '<link href="' + baseUrl + '/Content/Styles/bootstrap.min.css?ngBust=' + appSettings.ngBust + '" rel="stylesheet">';
-                css = '<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">';
+                css = '<link href="' + baseUrl + '/Content/Styles/bootstrap.min.css?ngBust=' + appSettings.ngBust + '" rel="stylesheet">';
+                // css = '<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">';
                 head.append(css);
 
                 css = '<link href="' + baseUrl + '/Content/Styles/app.css?ngBust=' + appSettings.ngBust + '" rel="stylesheet">';
@@ -89,8 +82,8 @@ define(['lib/IE/isIE', 'lib/IE/isIE8', 'lib/IE/isIE9', 'lib/IE/isIE11', 'xdomain
 
                 //netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css
                 //maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css
-                // css = '<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">';
-                css = '<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">';
+                css = '<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">';
+                // css = '<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">';
                 head.append(css);
 
                 httpEquiv = head.find('meta[http-equiv]');

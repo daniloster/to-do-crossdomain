@@ -3,7 +3,7 @@
 <div status-message></div>
 <div class="container page-body" ng-controller="ApplicationController as appCtrl">
     <div class="col-xs-12">
-        <h2>Applications <a href="javascript:;" modal-target="#registeringApp" modal-onload="setCurrent({})"><i class="icon-plus-sign"></i></a></h2>
+        <h2>Applications <a href="javascript:;" modal-target="#registeringApp" modal-onload="setCurrent({})"><i class="fa fa-plus-circle"></i></a></h2>
         <form name="appFilterForm" class="col-xs-12  no-wpadding form-fieldset-dialog blue">
             <fieldset>
                 <legend>Filters</legend>
@@ -32,7 +32,7 @@
         </form>
     </div>
     <div class="col-xs-12">
-        <h3>List of applications <i class="icon-cogs"></i></h3>
+        <h3>List of applications <i class="fa fa-cogs"></i></h3>
         <table class="table table-striped" ng-show="!!appsOut && !!appsOut.length">
             <thead>
                 <tr>
@@ -52,8 +52,8 @@
                         <p>{{ item.Description }}</p>
                     </td>
                     <td class="table-options">
-                        <a href="javascript:;" modal-target="#registeringApp" modal-onload="setCurrent(item)"><i class="icon-pencil"></i></a>
-                        <a href="javascript:;" modal-target="#deletingApp" modal-onload="setDeletingItem(item)"><i class="icon-remove"></i></a>
+                        <a href="javascript:;" modal-target="#registeringApp" modal-onload="setCurrent(item)"><i class="fa fa-pencil-square-o"></i></a>
+                        <a href="javascript:;" modal-target="#deletingApp" modal-onload="setDeletingItem(item)"><i class="fa fa-times-circle-o"></i></a>
                     </td>
                 </tr>
             </tbody>
@@ -74,7 +74,7 @@
         <div ng-show="hasSearched && !apps.length">
             <div class="alert alert-info">
                 <div class="message-center">
-                    <strong><i class="icon-check"></i>&nbsp;Ops!&nbsp;</strong>We could not find applications for you.</i>
+                    <strong><i class="fa fa-check-square-o"></i>&nbsp;Ops!&nbsp;</strong>We could not find applications for you.</i>
                 </div>
             </div>
         </div>
